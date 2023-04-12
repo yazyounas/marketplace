@@ -14,6 +14,8 @@ npx create-react-app .
 
 ## Getting The Data
 
+API: https://nc-marketplace-sem-3.onrender.com/docs/api-ref
+
 We are going to need some data in order to build the user interface for the marketplace. Our react application can then make API requests and display the information on the page. For this purpose the nc devs have built an API for you to retrieve data about the items, categories and users.
 
 A link to this API will be provided in your seminar channels!
