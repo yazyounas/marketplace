@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 
-function Item({ selectedCategory }) {
-  const [items, setItems] = useState([]);
+
+function Item({ items, setItems, cartItems, setCartItems, selectedCategory }) {
+  
   const [isLoading, setIsLoading] = useState(true);
+ 
 
   useEffect(() => {
     setIsLoading(true);
     fetch("https://nc-marketplace-sem-3.onrender.com/api/items")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setItems(data.items);
         setIsLoading(false);
       });
@@ -22,6 +23,11 @@ function Item({ selectedCategory }) {
   const filteredItems = selectedCategory
     ? items.filter((item) => item.category_name === selectedCategory)
     : items;
+    const handleAddToCart = (item) => {
+      setCartItems([...cartItems, item]);
+      alert('Item added to cart!');
+    };
+    
 
   return (
     <div className="item-grid-container">
@@ -34,11 +40,13 @@ function Item({ selectedCategory }) {
             <img src={item.img_url} alt={item.item_name} className="item-img"/>
             <p>Price: ${item.price}</p>
             <p>Category: {item.category_name}</p>
-            <button className="button">Add to Cart</button>
+            <button className="button" onClick={() =>handleAddToCart(item)}>Add to Cart</button>
           </li>
         ))}
       </ul>
+      
     </div>
+    
   );
 }
 

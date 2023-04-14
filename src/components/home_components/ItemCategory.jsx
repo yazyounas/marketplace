@@ -1,22 +1,18 @@
 import { useState, useEffect } from "react";
 import Item from "./Item";
 
-function ItemCategory() {
+function ItemCategory({items,setItems}) {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  
 
- 
-
- 
 
   useEffect(() => {
     setIsLoading(true);
     fetch("https://nc-marketplace-sem-3.onrender.com/api/categories")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setCategories(data.categories);
         setIsLoading(false);
       });
@@ -43,7 +39,7 @@ function ItemCategory() {
       </select>
       
       
- <Item selectedCategory={selectedCategory || null} />
+ <Item items={items} setItems={setItems} selectedCategory={selectedCategory || null} />
     
     </div>
   );
