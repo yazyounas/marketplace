@@ -13,7 +13,7 @@ function Header() {
           </Navbar.Brand>
           <Nav className="me-auto">
           <Link to="/sell" className="nav-link">Sell</Link>
-            <Nav.Link href="#basket">Basket</Nav.Link>
+            <Link to="/basket" className ="nav-link">Basket</Link>
             <Nav.Link href="#account">Account</Nav.Link>
           </Nav>
         </Container>
